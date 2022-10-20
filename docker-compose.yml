@@ -1,0 +1,68 @@
+version: "3.7"
+
+services:
+  nginx:
+    image: nginx:stable-alpine
+    container_name: nginx
+    ports:
+      - 8500:80
+    volumes:
+      - .:/home/oem/web/correspondencia
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - app_laravel
+      - mysql
+    networks:
+      - networkapp
+
+  mysql:
+    image: mysql:5.7
+    container_name: mysql
+    restart: always
+    environment:
+      MYSQL_DATABASE: correspondencia
+      MYSQL_USER: admin_iothinks
+      MYSQL_PASSWORD: Global*3522
+      MYSQL_ROOT_PASSWORD: 
+    ports:
+      - 33069:3306
+    volumes:
+      - 'dbdatalaravel:/var/lib/mysql'
+      - ./home/oem/dumps/correspondencia.sql:/docker-entrypoint-initdb.d/dump.sql
+    networks:
+      - networkapp
+
+  app_laravel:
+    build:
+      args:
+        user: oem
+        uid: 1000
+      context: .
+      dockerfile: ./Dockerfile
+    container_name: app_laravel
+    working_dir: /home/oem/web/correspondencia
+    volumes:
+      - .:/home/oem/web/correspondencia
+    networks:
+      - networkapp
+
+  minio_storage:
+    image: minio/minio
+    container_name: minio-storage
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    environment:
+      - MINIO_ROOT_USER=admin
+      - MINIO_ROOT_PASSWORD=password
+    volumes:
+        - minio-data:/data
+    command: server /data --console-address ":9001"
+
+
+networks: 
+  networkapp:
+
+volumes:
+  dbdatalaravel:
+  minio-data:
