@@ -20,8 +20,7 @@ Route::get('/', function () {
     return view('admin/welcome');
 })->name('index');
 
-//Route::prefix('admin')->group(function () {
-    
+//Route::prefix('admin')->group(function () { 
     Route::get('/login',[UserController::class,'loginView'])->name('usuario.login.view');
     Route::post('/login',[UserController::class,'login'])->name('admin.login');
     
@@ -34,19 +33,19 @@ Route::get('/', function () {
         Route::post('/usuario/update/{usuario}', [UserController::class,'update'])->name('admin.usuario.update');
         Route::post('/usuario/delete/{usuario}', [UserController::class,'destroy'])->name('admin.usuario.delete');
 
-        Route::get('/tiposTs',[TypeOfCaseController::class,'index'])->name('admin.tiposTs');
-        Route::get('/tiposT/create', [TypeOfCaseController::class,'create'])->name('admin.tiposT.create');
-        Route::post('/tiposT/store', [TypeOfCaseController::class,'store'])->name('admin.tiposT.store'); 
-        Route::get('/tiposT/edit/{tipo}', [TypeOfCaseController::class,'edit'])->name('admin.tiposT.edit'); 
-        Route::post('/tiposT/update/{tipo}', [TypeOfCaseController::class,'update'])->name('admin.tiposT.update');
-        Route::post('/tiposT/delete/{tipo}', [TypeOfCaseController::class,'destroy'])->name('admin.tiposT.delete');
-
         Route::get('/clientes',[ClientController::class,'index'])->name('usuario.clientes');
         Route::get('/clientes/create', [ClientController::class,'create'])->name('usuario.cliente.create');
         Route::post('/clientes/store', [ClientController::class,'store'])->name('usuario.cliente.store'); 
         Route::get('/clientes/edit/{cliente}', [ClientController::class,'edit'])->name('usuario.cliente.edit'); 
         Route::post('/clientes/update/{cliente}', [ClientController::class,'update'])->name('usuario.cliente.update');
         Route::post('/clientes/delete', [ClientController::class,'destroy'])->name('usuario.cliente.delete');
+
+        Route::get('/tiposTs',[TypeOfCaseController::class,'index'])->name('admin.tiposTs');
+        Route::get('/tiposT/create', [TypeOfCaseController::class,'create'])->name('admin.tiposT.create');
+        Route::post('/tiposT/store', [TypeOfCaseController::class,'store'])->name('admin.tiposT.store'); 
+        Route::get('/tiposT/edit/{tipo}', [TypeOfCaseController::class,'edit'])->name('admin.tiposT.edit'); 
+        Route::post('/tiposT/update/{tipo}', [TypeOfCaseController::class,'update'])->name('admin.tiposT.update');
+        Route::post('/tiposT/delete/{tipo}', [TypeOfCaseController::class,'destroy'])->name('admin.tiposT.delete');        
 
         Route::post('/logout',[UserController::class,'logout'])->name('admin.logout');
    });
