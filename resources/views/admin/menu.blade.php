@@ -1,4 +1,7 @@
-@extends('admin.layouts.template')
+@extends('layouts.head')
+@extends('layouts.menu-top')
+@extends('admin.layouts.menu-left')
+@extends('layouts.footer')
 
 @section('content')
     <h1>@lang('Bienvenido')!!</h1>
@@ -11,7 +14,7 @@
                     data-id="4bcc813c"
                     data-element_type="widget"
                     data-widget_type="ha-flip-box.default">
-                    <a href="#" target="_new9">
+                    <a href="{{route('centinela.menu')}}">
                     <div class="elementor-widget-container">
                         <div class="ha-flip-box-container ha-flip-effect-classic">
                             <div class="ha-flip-box-inner ha-flip-right">

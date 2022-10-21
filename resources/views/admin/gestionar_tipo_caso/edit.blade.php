@@ -1,4 +1,8 @@
-@extends('admin.layouts.template')
+@extends('layouts.head')
+@extends('layouts.menu-top')
+@extends('admin.layouts.menu-left')
+@extends('layouts.footer')
+
 @section('title')
     @lang('Editar Tipo de Caso')
 @endsection

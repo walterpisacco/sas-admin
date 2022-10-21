@@ -3,6 +3,7 @@
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\TypeOfCaseController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CentinelaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -45,7 +46,9 @@ Route::get('/', function () {
         Route::post('/tiposT/store', [TypeOfCaseController::class,'store'])->name('admin.tiposT.store'); 
         Route::get('/tiposT/edit/{tipo}', [TypeOfCaseController::class,'edit'])->name('admin.tiposT.edit'); 
         Route::post('/tiposT/update/{tipo}', [TypeOfCaseController::class,'update'])->name('admin.tiposT.update');
-        Route::post('/tiposT/delete/{tipo}', [TypeOfCaseController::class,'destroy'])->name('admin.tiposT.delete');        
+        Route::post('/tiposT/delete/{tipo}', [TypeOfCaseController::class,'destroy'])->name('admin.tiposT.delete'); 
+
+        Route::get('/centinela',[CentinelaController::class,'menu'])->name('centinela.menu');        
 
         Route::post('/logout',[UserController::class,'logout'])->name('admin.logout');
    });
