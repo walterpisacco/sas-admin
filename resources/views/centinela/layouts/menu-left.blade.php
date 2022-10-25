@@ -13,31 +13,31 @@
                 Opciones
             </div>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="{{route('usuario.clientes')}}" data-target="#collapsePages"
+                <a class="nav-link collapsed" href="{{route('centinela.gestionar.vehiculos')}}" data-target="#collapsePages"
+                    aria-expanded="true" aria-controls="collapsePages">
+                    <i class="material-icons">taxi_alert</i>
+                    <span>@lang('Lista de Vehículos')</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="{{route('centinela.ingreso.vehiculos')}}" data-target="#collapsePages"
+                    aria-expanded="true" aria-controls="collapsePages">
+                    <i class="material-icons">directions_car</i>
+                    <span>@lang('Lectura de Patentes')</span>
+                </a>
+            </li>    
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="{{route('centinela.gestionar.personas')}}" data-target="#collapsePages"
                     aria-expanded="true" aria-controls="collapsePages">
                     <i class="material-icons">how_to_reg</i>
                     <span>@lang('Gestionar Personas')</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="{{route('admin.usuarios')}}" data-target="#collapsePages"
-                    aria-expanded="true" aria-controls="collapsePages">
-                    <i class="material-icons">taxi_alert</i>
-                    <span>@lang('Gestionar Vehículos')</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="{{route('admin.usuarios')}}" data-target="#collapsePages"
+                <a class="nav-link collapsed" href="{{route('centinela.ingreso.personas')}}" data-target="#collapsePages"
                     aria-expanded="true" aria-controls="collapsePages">
                     <i class="material-icons">directions_walk</i>
                     <span>@lang('Ingreso de Personas')</span>
                 </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="{{route('admin.usuarios')}}" data-target="#collapsePages"
-                    aria-expanded="true" aria-controls="collapsePages">
-                    <i class="material-icons">directions_car</i>
-                    <span>@lang('Ingreso de Vehículos')</span>
-                </a>
-            </li>                        
+            </li>                    
         </ul>

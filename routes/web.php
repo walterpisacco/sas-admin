@@ -53,4 +53,21 @@ Route::get('/', function () {
         Route::post('/logout',[UserController::class,'logout'])->name('admin.logout');
    });
 
+        Route::prefix('centinela')->group(function () {  
+            Route::get('/',[CentinelaController::class,'menu'])->name('centinela.menu');
+            Route::get('/vehiculos',[CentinelaController::class,'vehiculos_list'])->name('centinela.gestionar.vehiculos'); 
+            Route::get('/vehiculos/create',[CentinelaController::class,'vehiculos_create'])->name('centinela.vehiculos.create');
+            Route::post('/vehiculos/store',[CentinelaController::class,'store'])->name('centinela.vehiculos.store');
+            Route::get('/vehiculos/edit/{id}',[CentinelaController::class,'vehiculos_edit'])->name('centinela.vehiculos.edit');
+            Route::post('/vehiculos/update',[CentinelaController::class,'vehiculos_update'])->name('centinela.vehiculos.update');
+            Route::post('/vehiculos/delete',[CentinelaController::class,'vehiculos_del'])->name('centinela.vehiculos.delete');
+
+            Route::get('/vehiculosing',[CentinelaController::class,'vehiculos_ing'])->name('centinela.ingreso.vehiculos');
+            Route::post('/vehiculosing/update',[CentinelaController::class,'ingresos_update'])->name('centinela.ingresosv.update');
+            Route::post('/vehiculosing/updatedest',[CentinelaController::class,'destinov_update'])->name('centinela.destinov.update');
+
+
+            Route::get('/personas',[CentinelaController::class,'personas_list'])->name('centinela.gestionar.personas');
+            Route::get('/personasing',[CentinelaController::class,'vehiculos_ing'])->name('centinela.ingreso.personas');
+        });
 //});

@@ -1,10 +1,10 @@
 @extends('layouts.head')
-@extends('layouts.menu-top')
-@extends('admin.layouts.menu-left')
 @extends('layouts.footer')
+@extends('layouts.menu-top')
+@extends('centinela.layouts.menu-left')
 
 @section('title')
-    @lang('Gestionar Clientes')
+    @lang('Gestionar Vehículos')
 @endsection
 
 @section('content')
@@ -15,11 +15,11 @@
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-               <a href="{{route('usuario.cliente.create')}}" class="btn btn-primary btn-icon-split">
+               <a href="{{route('centinela.vehiculos.create')}}" class="btn btn-primary btn-icon-split">
                 <span class="icon text-white-50">
                     <i class="fas fa-flag"></i>
                 </span>
-                <span class="text">@lang('Crear nuevo Cliente')</span>
+                <span class="text">@lang('Incorporar Vehiculo a una Lista')</span>
             </a>
             </div>
             <div class="card-body">
@@ -27,29 +27,40 @@
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
-                                <th width="20%">@lang('CUIT')</th>
-                                <th width="20%">@lang('Nombre')</th>
-                                <th width="20%">@lang('Razón Social')</th>
-                                <th width="20%">@lang('Dirección')</th>
-                                <th width="20%">@lang('Acciones')</th>
-                                
+                                <th width="10%">@lang('Patente')</th>
+                                <th width="20%">@lang('Marca')</th>
+                                <th width="20%">@lang('Modelo')</th>
+                                <th width="10%">@lang('Desde')</th>
+                                <th width="10%">@lang('Hasta')</th>
+                                <th width="10%">@lang('Destino')</th>
+                                <th width="20%"></th>
                             </tr>
                         </thead>
-                            @foreach ($clientes as $cliente)
+                            @foreach ($listaBlanca as $vehiculo)
                                 <tr>
-                                    <th>{{$cliente->cuit}}</th>
-                                    <th>{{$cliente->nombre}}</th>
-                                    <th>{{$cliente->razon_social}}</th>
-                                    <th>{{$cliente->direccion}}</th>
+                                    <th>{{$vehiculo->patente}}</th>
+                                    <th>{{$vehiculo->marca}}</th>
+                                    <th>{{$vehiculo->modelo}}</th>
+                                    <th>{{$vehiculo->fechaDesde->format('d/m/Y H:m')}}</th>
                                     <th>
-                                        <a href="{{route('usuario.cliente.edit',$cliente->id)}}" class="btn btn-secondary btn-icon-split shadow">
+                                        @isset($vehiculo->fechaHasta)
+                                            {{$vehiculo->fechaHasta->format('d/m/Y H:m')}}
+                                        @endisset
+                                    </th>
+                                    <th>
+                                        @isset($vehiculo->tipoSector)
+                                            {{$vehiculo->tipoSector->descripcion}}
+                                        @endisset
+                                    </th>
+                                    <th>
+                                        <a href="{{route('centinela.vehiculos.edit', $vehiculo->id)}}" class="btn btn-secondary btn-icon-split shadow">
                                             <span class="icon text-white-50">
                                                 <i class="fas fa-arrow-right"></i>
                                             </span>
                                             <span class="text">@lang('Editar')</span>
                                         </a>
                                             {{ csrf_field() }}
-                                            <button onClick="btnEliminar({{$cliente->id}})" class="btn btn-danger btn-icon-split shadow">
+                                            <button onClick="btnEliminar({{$vehiculo->id}})" class="btn btn-danger btn-icon-split shadow">
                                                 <span class="icon text-white-50">
                                                     <i class="fas fa-trash"></i>
                                                 </span>
@@ -87,7 +98,7 @@
     }
 
     function eliminar($id){
-        let url = "{{route('usuario.cliente.delete')}}";
+        let url = "{{route('centinela.vehiculos.delete')}}";
         toggleGifLoad();
         $.ajax({
             method: 'POST',

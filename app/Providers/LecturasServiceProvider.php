@@ -1,13 +1,15 @@
 <?php
 
 namespace App\Providers;
+use App\Models\lecturaPatentes;
+use App\Observers\LecturasObserver;
 
 use Illuminate\Support\ServiceProvider;
 
-class AppServiceProvider extends ServiceProvider
+class LecturasServiceProvider extends ServiceProvider
 {
     /**
-     * Register any application services.
+     * Register services.
      *
      * @return void
      */
@@ -17,12 +19,12 @@ class AppServiceProvider extends ServiceProvider
     }
 
     /**
-     * Bootstrap any application services.
+     * Bootstrap services.
      *
      * @return void
      */
     public function boot()
     {
-        
+        Mark::observe(LecturasObserver::class);
     }
 }

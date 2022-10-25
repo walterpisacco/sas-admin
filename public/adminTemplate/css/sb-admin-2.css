@@ -2361,6 +2361,13 @@ fieldset:disabled a.btn {
   border-color: #4e73df;
 }
 
+.btn-default {
+  color: #000;
+  background-color: lightgrey;
+  border-color: lightgrey;
+}
+
+
 .btn-primary:hover {
   color: #fff;
   background-color: #2e59d9;
@@ -10529,7 +10536,6 @@ a:focus {
     width: 14rem;
   }
   .sidebar .nav-item .nav-link i {
-    font-size: 0.85rem;
     margin-right: 0.25rem;
   }
   .sidebar .nav-item .nav-link span {
