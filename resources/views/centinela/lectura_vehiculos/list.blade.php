@@ -48,7 +48,12 @@
                                             </span>
                                             <span class="text">@lang('Editar')</span>
                                         </button>
-                                        <button id="btnDestino" data-info="{{$lectura->patente}},{{$lectura->lista->destino}}" class="btn btn-primary btn-icon-split shadow">
+                                        <button id="btnDestino" data-info="
+                                        {{$lectura->patente}},
+                                        @isset($lectura->lista)
+                                            {{$lectura->lista->destino}}
+                                        @endisset
+                                        " class="btn btn-primary btn-icon-split shadow">
                                             <span class="icon text-white-50">
                                                 <i class="fas fa-arrow-right"></i>
                                             </span>
@@ -201,6 +206,13 @@
                     });
 
                    window.location.reload();
+                }else{
+                    Swal.fire({
+                      icon: 'warning',
+                      title: response.texto,
+                      showConfirmButton: false,
+                      timer: 2500
+                    });
                 }
             })
             .always(toggleGifLoad)

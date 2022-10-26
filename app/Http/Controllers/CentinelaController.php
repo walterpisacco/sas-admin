@@ -101,11 +101,16 @@ class CentinelaController extends Controller
         if(isset($lectura)){
             $lectura->destino = strtoupper($request->destino);
             $lectura->update();
+            $result = array();
+            $result['success'] = 'true';
+            $result['texto'] = 'Destino actualizado con éxito!';
+        }else{
+            $result = array();
+            $result['success'] = 'false';
+            $result['texto'] = 'ATENCIÓN, Vehículo no encontrado en ninguna lista!!';
         }
 
-        $result = array();
-        $result['success'] = 'true';
-        $result['texto'] = 'Destino actualiado con éxito!';
+
         
         return json_encode($result);
     } 
