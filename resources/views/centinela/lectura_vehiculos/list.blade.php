@@ -35,7 +35,7 @@
                                     <th>{{$lectura->camara}}</th>
                                     <th>{{$lectura->patente}}</th>
                                     <th>{{$lectura->tipolista->descripcion}}</th>
-                                    <th>{{$lectura->fecha->format('d/m/Y H:m')}}</th>
+                                    <th>{{$lectura->fecha->format('d/m/Y H:i')}}</th>
                                     <th>
                                         @isset($lectura->lista->tipoSector)
                                             {{$lectura->lista->tipoSector->descripcion}}

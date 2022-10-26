@@ -27,9 +27,10 @@
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
+                                <th width="5%">#</th>
                                 <th width="10%">@lang('Patente')</th>
                                 <th width="20%">@lang('Marca')</th>
-                                <th width="20%">@lang('Modelo')</th>
+                                <th width="15%">@lang('Modelo')</th>
                                 <th width="10%">@lang('Desde')</th>
                                 <th width="10%">@lang('Hasta')</th>
                                 <th width="10%">@lang('Destino')</th>
@@ -38,13 +39,14 @@
                         </thead>
                             @foreach ($listaBlanca as $vehiculo)
                                 <tr>
+                                    <th>{{$vehiculo->id}}</th>
                                     <th>{{$vehiculo->patente}}</th>
                                     <th>{{$vehiculo->marca}}</th>
                                     <th>{{$vehiculo->modelo}}</th>
-                                    <th>{{$vehiculo->fechaDesde->format('d/m/Y H:m')}}</th>
+                                    <th>{{$vehiculo->fechaDesde->format('d/m/Y H:i')}}</th>
                                     <th>
                                         @isset($vehiculo->fechaHasta)
-                                            {{$vehiculo->fechaHasta->format('d/m/Y H:m')}}
+                                            {{$vehiculo->fechaHasta->format('d/m/Y H:i')}}
                                         @endisset
                                     </th>
                                     <th>

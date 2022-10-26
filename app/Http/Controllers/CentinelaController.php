@@ -17,7 +17,11 @@ class CentinelaController extends Controller
     }
 
     public function vehiculos_list(){
-        $listaBlanca = listaBlancaVehiculos::where('idCliente',auth()->user()->id_client)->get();
+        $listaBlanca = listaBlancaVehiculos::
+            where('idCliente',auth()->user()->id_client)
+            ->orderBy('id','desc')
+            ->get();
+
         return view('centinela.gestionar_vehiculos.list',compact('listaBlanca'));
     }
 
@@ -72,8 +76,13 @@ class CentinelaController extends Controller
     }
 
     public function vehiculos_ing(){
-        $lecturas = lecturaPatentes::where('idCliente',auth()->user()->id_client)->get();
+        $lecturas = lecturaPatentes::
+            where('idCliente',auth()->user()->id_client)
+            ->orderBy('id', 'desc')
+            ->get();
+
         $sectores = tipoSector::where('cliente',auth()->user()->id_client)->get();
+
         return view('centinela.lectura_vehiculos.list',compact('lecturas'),compact('sectores'));
     }
 
